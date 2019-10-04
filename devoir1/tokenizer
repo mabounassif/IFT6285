@@ -1,0 +1,14 @@
+#!/bin/bash
+
+sed 's/\&\#124\;//g; s/\&\#91\;//g; s/\&\#93\;//g; s/\&amp\;//g; s/\&gt\;//g; s/\&lt\;//g; s/\&quot\;//g; s/\&apos\;//g;' data/$2.$1.trunc > processed/$2/$1/$2.$1.nospecial
+sed 's/[[:punct:]]//g' processed/$2/$1/$2.$1.nospecial > processed/$2/$1/$2.$1.nospecial.nopunct
+sed -E 's/[0-9]+//g' processed/$2/$1/$2.$1.nospecial.nopunct > processed/$2/$1/$2.$1.nospecial.nopunct.nonumb
+sed -r 's/\s+/\n/g;' processed/$2/$1/$2.$1.nospecial.nopunct.nonumb | sort > processed/$2/$1/$2.$1.nospecial.nopunct.nonumb.words.sort
+
+if [ -z "$3" ]
+then
+	echo "No count"
+else
+	cat processed/$2/$1/$2.$1.nospecial.nopunct.nonumb.words.sort | uniq -c | sort -rn > processed/$2/$1/$2.$1.nospecial.nopunct.nonumb.words.sort.uniq
+	awk '{if($1 > 100){ print $0 }}' processed/$2/$1/$2.$1.nospecial.nopunct.nonumb.words.sort.uniq | sort -rn > processed/$2/$1/$2.$1.nospecial.nopunct.nonumb.words.sort.uniq.frequent
+fi
