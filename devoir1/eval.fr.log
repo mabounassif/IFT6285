@@ -1,0 +1,8 @@
+loaded vocab with 11027 unique words
+loaded 3-gram language model
+Success
+total_score: -152707.66811614996, total_word_count: 82790.0, top_1: 22059.0, top_3: 29985.0, top_5: 33244.0, total_words: 79790.0
+
+real	45m57.726s
+user	69m18.016s
+sys	0m2.196s

@@ -69,15 +69,22 @@ def get_counts(line):
 
         if idx < len(line_a) - 1:
             if line_a[idx+1] in [best5[1] for best5 in best_5]:
+                #sys.stdout.write(line_a[idx+1])
+                #sys.stdout.write('\n')
                 best_5_count += 1
 
             if line_a[idx+1] in [best3[1] for best3 in best_3]:
+                #sys.stdout.write(line_a[idx+1])
+                #sys.stdout.write('\n')
                 best_3_count += 1
 
             if line_a[idx+1] ==  best_1[1]:
+                #sys.stdout.write(line_a[idx+1])
+                #sys.stdout.write('\n')
                 best_1_count += 1
 
             total_word_predicted += 1
+            #sys.stdout.flush()
 
         total_word_count += 1
 
@@ -108,7 +115,7 @@ total_word_predicted = 0.0
 
 for r in results:
     for result in r.get():
-        print(result)
+        #print(result)
         total_score += result[0]
         total_word_count += result[1]
         best_1_count += result[2]
