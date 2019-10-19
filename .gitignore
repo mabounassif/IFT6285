@@ -3,3 +3,4 @@
 kenlm/
 */data/*
 */processed/*
+**/__pycache__/*
